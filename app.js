@@ -35,7 +35,7 @@ function createMovie(data) {
 
   //  сброс предыдущих фильмов
   document.querySelector(".movies").innerHTML = "";
-
+  
   data.films.forEach((movie) => {
     const filmElement = document.createElement("div");
     filmElement.classList.add("movie");
@@ -52,8 +52,8 @@ function createMovie(data) {
               (category) => ` ${category.genre}`
             )}</div>
             <div class="movie__average movie__average--${getClassByRate(
-              movie.rating
-            )}">${movie.rating}</div>
+              parseInt(movie.rating) < 10 ? movie.rating : 8.5
+            )}">${(parseInt(movie.rating) < 10 ? movie.rating : 8.5)}</div>
         </div>`;
     filmElement.addEventListener("click",() => openModal(movie.filmId))
     moviesElement.appendChild(filmElement);
